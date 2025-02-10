@@ -7,12 +7,16 @@ import createCustomer from './createCustomer';
 export default function CreatePage() {
     const formRef = useRef();
     const router = useRouter();
+    const [errorMessage, setErrorMessage] = useState(""); // エラーメッセージの状態管理
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(formRef.current);
-        await createCustomer(formData);
-        router.push(`./create/confirm?customer_id=${formData.get("customer_id")}`);
+        // backendで作成したidを受け取る
+        const customer_id = await createCustomer(formData);
+        router.push(`./create/confirm?customer_id=${customer_id}`);
+        //await createCustomer(formData);
+        //router.push(`./create/confirm?customer_id=${formData.get("customer_id")}`);
     };
 
     return (
@@ -24,7 +28,8 @@ export default function CreatePage() {
                             <h2 className="card-title">
                                 <p><input type="text" name="customer_name" placeholder="桃太郎" className="input input-bordered" /></p>
                             </h2>
-                            <p>Customer ID:<input type="text" name="customer_id" placeholder="C030" className="input input-bordered" /></p>
+                            {/* エラー③: customer_idは自動生成される形に変更するため、formDataからは削除する */}
+                            {/*<p>Customer ID:<input type="text" name="customer_id" placeholder="C030" className="input input-bordered" /></p>*/}
                             <p>Age:<input type="number" name="age" placeholder="30" className="input input-bordered" /></p>
                             <p>Gender:<input type="text" name="gender" placeholder="女" className="input input-bordered" /></p>
                         </div>
