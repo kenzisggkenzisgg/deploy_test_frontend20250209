@@ -1,5 +1,5 @@
 "use client"
-import { useRef } from 'react';
+import { useRef, useState} from 'react';  //useStateを追加
 import { useRouter } from 'next/navigation';
 
 import createCustomer from './createCustomer';
