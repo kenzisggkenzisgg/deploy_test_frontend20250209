@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, use } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import fetchCustomer from "./fetchCustomer";
 import updateCustomer from "./updateCustomer";
