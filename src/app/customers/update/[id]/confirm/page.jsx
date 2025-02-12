@@ -2,7 +2,7 @@
 import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
 import fetchCustomer from "./../fetchCustomer";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";   //use削除　20250212
 import { Suspense } from "react"
 
 export default function ConfirmPageWrapper() {
@@ -14,7 +14,8 @@ export default function ConfirmPageWrapper() {
 }
 
 function ConfirmPage(props) {
-  const params = use(props.params);
+  //const params = use(props.params);
+  const params = props.params; // use() を削除 20250212修正
   const router = useRouter();
   const id = params.id;
   const [customer, setCustomer] = useState([]);
