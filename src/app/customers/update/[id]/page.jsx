@@ -5,7 +5,8 @@ import fetchCustomer from "./fetchCustomer";
 import updateCustomer from "./updateCustomer";
 
 export default function UpdatePage(props) {
-  const params = use(props.params);
+  //const params = use(props.params);
+  const params = props.params; // use() を削除 20250212修正
   const router = useRouter();
   const id = params.id;
   const formRef = useRef();
