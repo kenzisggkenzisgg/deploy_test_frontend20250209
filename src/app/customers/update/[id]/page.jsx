@@ -27,7 +27,8 @@ export default function UpdatePage(props) {
   };
 
   const previous_customer_name = customerInfo.customer_name;
-  const previous_customer_id = customerInfo.customer_id;
+  //const previous_customer_id = customerInfo.customer_id;
+  const previous_customer_id = customerInfo?.customer_id ?? ""; //20250212修正
   const previous_age = customerInfo.age;
   const previous_gender = customerInfo.gender;
 
@@ -55,6 +56,7 @@ export default function UpdatePage(props) {
                   name="customer_id"
                   defaultValue={previous_customer_id}
                   className="input input-bordered"
+                  readOnly //readOnly は「読み取り専用」を意味し、ユーザーは編集できませんが、FormData に含まれます。20250212追記
                 />
               </p>
               <p>
