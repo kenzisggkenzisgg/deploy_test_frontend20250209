@@ -20,6 +20,25 @@ export default function UpdatePage(props) {
   }, []);
 
 
+//20250216　formData.get("customer_id") の値が null になる可能性があるため、明示的に customerInfo.customer_id から取得するように修正。
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(formRef.current);
+    const customerID = formData.get("customer_id")?.trim() || customerInfo.customer_id; // `customerInfo` からも取得
+    console.log("Extracted customer_id:", customerID); // 🔍 デバッグ
+  
+    if (!customerID) {
+      console.error("Customer ID is missing.");
+      return;
+    }
+  
+    await updateCustomer(formData);
+    router.push(`./${customerID}/confirm`);
+  };
+
+
+  //20250216コメントアウト
+  /*
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(formRef.current);
@@ -28,6 +47,7 @@ export default function UpdatePage(props) {
     await updateCustomer(formData);
     router.push(`./${formData.get("customer_id")}/confirm`);
   };
+  */
  
   /*
   const handleSubmit = async (event) => {
