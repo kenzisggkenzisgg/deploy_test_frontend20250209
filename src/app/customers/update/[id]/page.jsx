@@ -11,21 +11,6 @@ export default function UpdatePage(props) {
   const formRef = useRef();
   const [customerInfo, setCustomerInfo] = useState([]);
 
-  //20250216修正
-  useEffect(() => {
-    const fetchAndSetCustomer = async () => {
-      if (!id) return;
-      try {
-        const customerData = await fetchCustomer(id);
-        setCustomerInfo(customerData || {}); // 空オブジェクトをセット
-      } catch (error) {
-        console.error("Failed to fetch customer:", error);
-      }
-    };
-    fetchAndSetCustomer();
-  }, [id]);
- 
-  /* 20250216　コメントアウト
   useEffect(() => {
     const fetchAndSetCustomer = async () => {
       const customerData = await fetchCustomer(id);
@@ -33,7 +18,7 @@ export default function UpdatePage(props) {
     };
     fetchAndSetCustomer();
   }, []);
-  */
+
 
 //20250216　formData.get("customer_id") の値が null になる可能性があるため、明示的に customerInfo.customer_id から取得するように修正。
   const handleSubmit = async (event) => {
