@@ -4,6 +4,10 @@ export default async function updateCustomer(formData) {
   const updated_age = parseInt(formData.get("age"));
   const updated_gender = formData.get("gender");
 
+  console.log("Updating customer ID:", updated_customer_id); // 🔍 デバッグ
+  console.log("Updated Age:", updated_age); // 🔍 デバッグ
+  console.log("Updated Gender:", updated_gender); // 🔍 デバッグ
+
   const body_msg = JSON.stringify({
     customer_name: updated_customer_name,
     customer_id: updated_customer_id,
