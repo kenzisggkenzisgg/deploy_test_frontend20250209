@@ -98,7 +98,7 @@ export default function UpdatePage(props) {
                   defaultValue={previous_customer_id}
                   className="input input-bordered"
                   readOnly //readOnly は「読み取り専用」を意味し、ユーザーは編集できませんが、FormData に含まれます。
-                  //disabled 20250209削除
+                  disabled //20250216挿入
                   //disabled は、HTML の <input> 要素に適用できる属性の1つで、「無効化」を意味します。
                   //disabled がついている <input> は、フォームを submit したときに 値が送信されません。
                 />                
